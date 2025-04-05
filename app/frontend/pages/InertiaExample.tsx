@@ -1,3 +1,4 @@
+// app/frontend/pages/InertiaExample.tsx
 import { Head } from '@inertiajs/react'
 import { useState } from 'react'
 

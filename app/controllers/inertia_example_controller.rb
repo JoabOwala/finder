@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+#app/conrollers/inertia_example_controller.rb
 class InertiaExampleController < ApplicationController
   def index
     render inertia: 'InertiaExample', props: {
