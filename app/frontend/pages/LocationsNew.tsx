@@ -1,3 +1,4 @@
+// app/frontend/pages/LocationsNew.tsx
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 

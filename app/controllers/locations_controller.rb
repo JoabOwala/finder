@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
     
     def index
       @locations = Location.all
-      render inertia: 'Locations/Index', props: { locations: @locations }
+      render inertia: 'LocationsIndex', props: { locations: @locations, auth: { user: current_user } }
     end
     
     def create
