@@ -1,24 +1,66 @@
-# README
+# Location Pinning App (finder)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A full-stack web application using Ruby on Rails, Inertia.js, and React that allows users to register, log in, and drop pins on a map representing locations by name, latitude, and longitude. All users can view pins from everyone on the landing page. Admin role enables user management through a dedicated dashboard.
 
-Things you may want to cover:
+## Core Functionality
+- User authentication (sign up, log in, log out)
+- Add a location 
+- Interactive map view showing all user-submitted pins
+- Pins displayed on the landing page
+- Admin user: Can add or delete users via an admin dashboard
 
-* Ruby version
+## Stack
+- Backend: Ruby on Rails
+- Frontend: React (via Inertia.js)
+- Map Rendering: Leaflet.js
+- Authentication: Devise 
 
-* System dependencies
+## Getting Started
 
-* Configuration
+Clone the repo
 
-* Database creation
+```console
+$ git clone https://github.com/JoabOwala/finder.git
+$ cd finder
+```
+Install dependencies
 
-* Database initialization
+```console
+$ bundle install
+$ npm install
+```
 
-* How to run the test suite
+Setup database
 
-* Services (job queues, cache servers, search engines, etc.)
+```console
+$ rails db:create db:migrate db:seed
+```
 
-* Deployment instructions
+Start the server
 
-* ...
+```console
+$ rails s
+```
+
+## Usage
+
+- Visit http://127.0.0.1:3000 to view the map with all locations pins
+- Sign up or log in
+- Once logged in, add a new location using the form
+- Hover to view details
+
+### Admin
+
+Admin users can
+- View all users
+- View all locations
+- Remove and add users from the system
+
+## Screenshot
+
+![Screenshot Image](finder.png)
+
+## License
+
+## Contributors
+- [Joab Owala](https://github.com/jowala)
