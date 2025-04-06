@@ -23,15 +23,20 @@ interface Props {
   locations: Location[];
 }
 
+// Define your custom icon
+const customIcon = new L.Icon({
+  iconUrl: "/images/pin.png", 
+  iconSize: [25, 40],
+  iconAnchor: [15, 45],
+});
+
 const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
-  // State for the search input and suggestions list
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<Location[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
 
   const mapRef = useRef<LeafletMap | null>(null);
 
-  // Fetch suggestions from Nominatim when query changes
   useEffect(() => {
     if (query.length < 3) {
       setSuggestions([]);
@@ -43,7 +48,6 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
           `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`
         );
         const data = await response.json();
-        // Map results into our Location format
         const results = data.map((item: any) => ({
           name: item.display_name,
           latitude: parseFloat(item.lat),
@@ -58,14 +62,12 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
     fetchSuggestions();
   }, [query]);
 
-  // When a suggestion is clicked, set it as the selected location and clear suggestions.
   const handleSuggestionClick = (loc: Location) => {
     setSelectedLocation(loc);
     setQuery(loc.name);
     setSuggestions([]);
   };
 
-  // Submit the selected location
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedLocation) return;
@@ -85,7 +87,7 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
     <div className="p-4">
       <h1 className="text-xl font-bold mb-2">{welcome_message}</h1>
 
-      {/* Search Box */}
+      {/* Search and suggestion input */}
       <form onSubmit={handleSubmit} className="mb-4 space-y-2 relative">
         <input
           type="text"
@@ -94,13 +96,12 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
-            setSelectedLocation(null); // Reset the selection if user types again
+            setSelectedLocation(null);
           }}
           className="border p-2 w-full"
           autoComplete="off"
           required
         />
-        {/* Display suggestions */}
         {suggestions.length > 0 && (
           <ul className="absolute z-10 bg-white border w-full max-h-60 overflow-y-auto">
             {suggestions.map((loc, idx) => (
@@ -114,10 +115,7 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
             ))}
           </ul>
         )}
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
-        >
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
           Add Location
         </button>
       </form>
@@ -144,9 +142,8 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
             attribution="&copy; OpenStreetMap contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {/* Render all saved locations */}
           {locations.map((loc) => (
-            <Marker key={loc.id} position={[loc.latitude, loc.longitude]}>
+            <Marker key={loc.id} position={[loc.latitude, loc.longitude]} icon={customIcon}>
               <Tooltip direction="top" offset={[0, -10]} opacity={1} permanent={false}>
                 <span>
                   {loc.name} <br />
@@ -158,10 +155,7 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
         </MapContainer>
       </div>
 
-      <button
-        onClick={handleLogout}
-        className="bg-red-500 text-white px-4 py-2 rounded mt-4"
-      >
+      <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded mt-4">
         Logout
       </button>
     </div>
