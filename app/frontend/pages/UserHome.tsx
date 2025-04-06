@@ -1,10 +1,11 @@
 // app/frontend/pages/UserHome.tsx
-// import React from "react";
 import { router } from "@inertiajs/react";
 
 const UserHome = () => {
+
   const handleLogout = () => {
     router.delete("/logout");
+    
   };
 
   return (
