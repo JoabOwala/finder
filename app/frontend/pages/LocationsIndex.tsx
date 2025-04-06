@@ -1,4 +1,5 @@
-// import React from 'react';
+// app/frontend/pages/LocationsIndex.tsx
+import AuthLayout from "../Layouts/AuthLayout";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngExpression } from "leaflet";
@@ -17,16 +18,13 @@ const LocationsIndex = () => {
   const center: LatLngExpression = [51.505, -0.09];
 
   return (
-    <div>
+    <AuthLayout>
       <h1>Your Locations</h1>
-
-      {/* If the logged in user is admin, show a link to the dashboard */}
       {auth.user && auth.user.role === "admin" && (
         <div>
           <InertiaLink href="/admin/users">Go to Admin Dashboard</InertiaLink>
         </div>
       )}
-
       <MapContainer center={center} zoom={13} style={{ height: "500px" }}>
         <TileLayer
           attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -35,15 +33,13 @@ const LocationsIndex = () => {
         {locations.map((location) => (
           <Marker
             key={location.id}
-            position={
-              [location.latitude, location.longitude] as LatLngExpression
-            }
+            position={[location.latitude, location.longitude] as LatLngExpression}
           >
             <Popup>{location.name}</Popup>
           </Marker>
         ))}
       </MapContainer>
-    </div>
+    </AuthLayout>
   );
 };
 

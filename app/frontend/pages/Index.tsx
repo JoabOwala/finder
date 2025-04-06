@@ -1,4 +1,4 @@
-// # app/frontend/pages/index.tsx
+// app/frontend/pages/Index.tsx
 import { Inertia } from '@inertiajs/inertia';
 import { usePage } from '@inertiajs/react';
 

@@ -1,4 +1,4 @@
-// import React from "react";
+// app/frontend/pages/Home.tsx
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 const Home = () => {

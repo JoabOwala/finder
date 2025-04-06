@@ -1,4 +1,4 @@
-// app/frontend/pages/AdminUsersIndex.tsx
+// app/frontend/pages/Admin/Users/Index.tsx
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 
