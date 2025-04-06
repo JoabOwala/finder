@@ -25,8 +25,12 @@ module Admin
   
       def destroy
         @user = User.find(params[:id])
-        @user.destroy
-        redirect_to admin_users_path, notice: "User deleted!"
+        if @user == current_user
+          redirect_to admin_users_path, alert: "You cannot delete yourself!"
+        else
+          @user.destroy
+          redirect_to admin_users_path, notice: "User deleted!"
+        end
       end
   
       private

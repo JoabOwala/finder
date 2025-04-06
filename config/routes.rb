@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :new, :create, :destroy]
+    get '/', to: 'home#index', as: :dashboard
   end
-  
+
   # New root to the landing page
   root "home#index"
   
