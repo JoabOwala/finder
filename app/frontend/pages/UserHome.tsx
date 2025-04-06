@@ -15,6 +15,9 @@ interface Location {
   name: string;
   latitude: number;
   longitude: number;
+  user: {
+    username: string;
+  };
 }
 
 interface Props {
@@ -25,7 +28,7 @@ interface Props {
 
 // Define your custom icon
 const customIcon = new L.Icon({
-  iconUrl: "/images/pin.png", 
+  iconUrl: "/images/pin.png",
   iconSize: [25, 40],
   iconAnchor: [15, 45],
 });
@@ -33,7 +36,9 @@ const customIcon = new L.Icon({
 const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<Location[]>([]);
-  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(
+    null
+  );
 
   const mapRef = useRef<LeafletMap | null>(null);
 
@@ -45,7 +50,9 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
     const fetchSuggestions = async () => {
       try {
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+            query
+          )}`
         );
         const data = await response.json();
         const results = data.map((item: any) => ({
@@ -115,7 +122,10 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
             ))}
           </ul>
         )}
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
+        >
           Add Location
         </button>
       </form>
@@ -143,11 +153,21 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {locations.map((loc) => (
-            <Marker key={loc.id} position={[loc.latitude, loc.longitude]} icon={customIcon}>
-              <Tooltip direction="top" offset={[0, -10]} opacity={1} permanent={false}>
+            <Marker
+              key={loc.id}
+              position={[loc.latitude, loc.longitude]}
+              icon={customIcon}
+            >
+              <Tooltip
+                direction="top"
+                offset={[0, -10]}
+                opacity={1}
+                permanent={false}
+              >
                 <span>
                   {loc.name} <br />
-                  (lat: {loc.latitude}, lng: {loc.longitude})
+                  (lat: {loc.latitude}, lng: {loc.longitude}) <br />
+                  Added by: <strong>{loc.user?.username || "Unknown"}</strong>
                 </span>
               </Tooltip>
             </Marker>
@@ -155,7 +175,10 @@ const UserHome: React.FC<Props> = ({ user, welcome_message, locations }) => {
         </MapContainer>
       </div>
 
-      <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded mt-4">
+      <button
+        onClick={handleLogout}
+        className="bg-red-500 text-white px-4 py-2 rounded mt-4"
+      >
         Logout
       </button>
     </div>
