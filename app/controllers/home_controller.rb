@@ -10,11 +10,11 @@ class HomeController < ApplicationController
       else
         render inertia: 'UserHome', props: { 
           user: current_user, welcome_message: "Welcome #{current_user.username}!",
-          locations: current_user.locations
+          locations: Location.all
         }
       end
     else
-      render inertia: 'Home'
+      render inertia: 'Home', props: { locations: Location.all }
     end
   end
 end

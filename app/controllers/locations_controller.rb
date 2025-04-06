@@ -1,6 +1,7 @@
 # app/controllers/locations_controller.rb
 class LocationsController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
+
     
     def index
       @locations = Location.all
