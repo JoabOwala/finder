@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
     def create
       @location = current_user.locations.build(location_params)
       if @location.save
-        redirect_to locations_path, notice: "Location created!"
+        redirect_to root_path, notice: "Location created!"
       else
         render inertia: 'Locations/New', props: { errors: @location.errors.full_messages }
       end
