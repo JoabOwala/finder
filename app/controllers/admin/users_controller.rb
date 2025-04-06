@@ -9,6 +9,11 @@ module Admin
         render inertia: 'Admin/Users/Index', props: { users: @users }
       end
   
+      def new
+        @user = User.new
+        render inertia: 'Admin/Users/New'
+      end
+      
       def create
         @user = User.new(user_params)
         if @user.save

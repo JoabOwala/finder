@@ -171,10 +171,7 @@ const AdminHome: React.FC<AdminHomeProps> = ({
                 <span>
                   {loc.name} <br />
                   (lat: {loc.latitude}, lng: {loc.longitude}) <br />
-                  Added by:{" "}
-                  <strong>
-                    {loc.user?.username || "Unknown"}
-                  </strong>
+                  Added by: <strong>{loc.user?.username || "Unknown"}</strong>
                 </span>
               </Tooltip>
             </Marker>
@@ -188,6 +185,13 @@ const AdminHome: React.FC<AdminHomeProps> = ({
       >
         Logout
       </button>
+
+      <button
+            onClick={() => router.get('/admin/users')}
+            className="bg-green-500 text-white px-4 py-2 rounded"
+          >
+            Manage Users
+          </button>
     </div>
   );
 };

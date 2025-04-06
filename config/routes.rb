@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:create]
 
+  namespace :admin do
+    resources :users, only: [:index, :new, :create, :destroy]
+  end
+  
   # New root to the landing page
   root "home#index"
   
