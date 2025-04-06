@@ -13,7 +13,7 @@ module Admin
         @user = User.new
         render inertia: 'Admin/Users/New'
       end
-      
+
       def create
         @user = User.new(user_params)
         if @user.save
@@ -36,7 +36,7 @@ module Admin
       end
   
       def user_params
-        params.require(:user).permit(:email, :password, :role)
+        params.require(:user).permit(:email, :password, :role, :username)
       end
     end
   end
