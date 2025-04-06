@@ -17,12 +17,13 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       if current_user.admin?
-        render inertia: 'AdminHome', props: { user: current_user }
+        render inertia: 'AdminHome', props: { user: current_user, welcome_message: "Welcome #{current_user.username}!" }
       else
-        render inertia: 'UserHome', props: { user: current_user }
+        render inertia: 'UserHome', props: { user: current_user, welcome_message: "Welcome #{current_user.username}!" }
       end
     else
       render inertia: 'Home'
     end
   end
 end
+

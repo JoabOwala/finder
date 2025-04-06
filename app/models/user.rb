@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :locations, dependent: :destroy
   
+  validates :username, presence: true, uniqueness: true
+
   def admin?
     role == "admin"
   end
