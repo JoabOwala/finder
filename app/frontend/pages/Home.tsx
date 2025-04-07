@@ -1,4 +1,5 @@
 // app/frontend/pages/Home.tsx
+import React from "react";
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -21,38 +22,119 @@ const Home: React.FC<HomeProps> = ({ locations }) => {
     iconAnchor: [15, 45],
   });
 
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="page-container">
+      <style>{`
+        .page-container {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          background-color: #f0f2f5;
+          font-family: Arial, sans-serif;
+        }
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 16px 24px;
+        }
+        /* Header */
+        .header {
+          background-color: #2563eb;
+          color: white;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .header-title {
+          font-size: 24px;
+          font-weight: bold;
+        }
+        .nav-links a {
+          color: white;
+          margin-left: 16px;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+          color: #93c5fd;
+        }
+        /* Main */
+        .main-content {
+          flex-grow: 1;
+          padding: 32px 24px;
+        }
+        .main-content h1 {
+          font-size: 36px;
+          font-weight: bold;
+          color: #1a1a1a;
+          margin-bottom: 16px;
+          text-align: center;
+        }
+        .main-content p {
+          font-size: 18px;
+          color: #4a4a4a;
+          margin-bottom: 32px;
+          text-align: center;
+        }
+        .map-container {
+          border: 2px solid #e0e0e0;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          height: 500px;
+          width: 100%;
+        }
+        /* Footer */
+        .footer {
+          background-color: #2563eb;
+          color: white;
+          padding: 24px 0;
+        }
+        .footer-links {
+          display: flex;
+          justify-content: center;
+          gap: 24px;
+        }
+        .footer-links a {
+          color: white;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+          color: #93c5fd;
+        }
+        .footer-copy {
+          margin-top: 12px;
+          font-size: 14px;
+          color: #d1d5db;
+          text-align: center;
+        }
+      `}</style>
+
       {/* Header */}
-      <header className="bg-blue-600 text-white shadow-lg">
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">Finder</h1>
-            <div className="flex space-x-4">
-              <a href="/login" className="hover:text-blue-200 transition-colors">
-                Login
-              </a>
-              <a href="/signup" className="hover:text-blue-200 transition-colors">
-                Sign Up
-              </a>
-            </div>
+      <header className="header">
+        <div className="container header-inner">
+          <h1 className="header-title">Finder</h1>
+          <div className="nav-links">
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
           </div>
-        </nav>
+        </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-grow container mx-auto px-6 py-8">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to Finder!</h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Discover and create your locations. Join our community to start
-            marking your favorite spots on the map!
+      {/* Main */}
+      <main className="main-content">
+        <div className="container">
+          <h1>Welcome to Finder!</h1>
+          <p>
+            Discover and create your locations. Join our community to start marking your favorite spots on the map!
           </p>
-          
-          <div
-            className="border-2 border-gray-200 rounded-xl overflow-hidden shadow-xl"
-            style={{ height: "500px", width: "100%" }}
-          >
+          <div className="map-container">
             <MapContainer
               center={[-1.286389, 36.817223]}
               zoom={6}
@@ -79,22 +161,14 @@ const Home: React.FC<HomeProps> = ({ locations }) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-blue-600 text-white py-6 mt-12">
-        <div className="container mx-auto px-6 text-center">
-          <div className="flex justify-center space-x-6 mb-4">
-            <a href="/about" className="hover:text-blue-400 transition-colors">
-              About
-            </a>
-            <a href="/contact" className="hover:text-blue-400 transition-colors">
-              Contact
-            </a>
-            <a href="/privacy" className="hover:text-blue-400 transition-colors">
-              Privacy Policy
-            </a>
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-links">
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy Policy</a>
           </div>
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Finder. All rights reserved.
-          </p>
+          <p className="footer-copy">© {currentYear} Finder. All rights reserved.</p>
         </div>
       </footer>
     </div>
