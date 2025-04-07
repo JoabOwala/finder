@@ -49,6 +49,14 @@ $ rails s
 - Once logged in, add a new location using the form
 - Hover to view details
 
+## or 
+
+## Running Docker Script 
+
+```console
+$ ./build-docker.sh
+```
+
 ### Admin
 
 Admin users can
