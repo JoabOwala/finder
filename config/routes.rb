@@ -11,5 +11,8 @@ Rails.application.routes.draw do
 
   # New root to the landing page
   root "home#index"
+
+    # Catch-all route (must be last)
+    match "*path", to: "application#handle_unavailable", via: :all
   
 end
