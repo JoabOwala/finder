@@ -59,3 +59,9 @@ gem "inertia_rails", "~> 3.7"
 gem "vite_rails", "~> 3.0"
 
 gem 'devise'
+
+gem 'omniauth-google-oauth2'
+
+gem 'dotenv-rails'
+
+

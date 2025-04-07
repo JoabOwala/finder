@@ -1,3 +1,4 @@
+// app/frontend/pages/Admin/Users/Index.tsx
 import React from "react";
 import { router } from "@inertiajs/react";
 

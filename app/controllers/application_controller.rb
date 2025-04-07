@@ -12,10 +12,16 @@ class ApplicationController < ActionController::Base
       {}
     end
   }
+
+  def handle_unavailable
+    # Redirect back to the referrer or fallback to the root path
+    redirect_back fallback_location: root_path, alert: "The page you were looking for doesn't exist."
+  end
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,        keys: [:username])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
+
 end

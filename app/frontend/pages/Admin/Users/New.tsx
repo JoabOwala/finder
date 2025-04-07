@@ -1,3 +1,4 @@
+// app/frontend/pages/Admin/Users/New.tsx
 import React, { useState } from "react";
 import { router } from "@inertiajs/react";
 
