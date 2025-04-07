@@ -33,7 +33,7 @@ $ npm install
 Setup database
 
 ```console
-$ rails db:create db:migrate db:seed
+$ rails db:migrate db:seed
 ```
 
 Start the server
@@ -49,6 +49,14 @@ $ rails s
 - Once logged in, add a new location using the form
 - Hover to view details
 
+## or 
+
+## Running Docker Script 
+
+```console
+$ ./build-docker.sh
+```
+
 ### Admin
 
 Admin users can
@@ -58,7 +66,34 @@ Admin users can
 
 ## Screenshot
 
-![Screenshot Image](finder.png)
+Screen Shots
+
+![Screenshot Image](./assets/landingPg.png)
+1. Landing Page
+
+
+![Screenshot Image](./assets/LogInPg.png)
+2. LogIn Page
+
+
+![Screenshot Image](./assets/SignUpPg.png)
+3. Sign Up
+
+
+![Screenshot Image](./assets/UserLoggedInPg.png)
+4. Users Page
+
+
+![Screenshot Image](./assets/AdminDashPg.png)
+5. Admin Page
+
+
+![Screenshot Image](./assets/AdminUserManagePg.png)
+6. Admin Dashboard page
+
+
+![Screenshot Image](./assets/AdminAddUserPg.png)
+7. Admin Add new user page
 
 ## License
 
