@@ -49,3 +49,17 @@
 # Ignore Docker-related files
 /.dockerignore
 /Dockerfile*
+
+
+.git
+Dockerfile
+docker-compose.yml
+.env
+.gitignore
+.dockerignore
+log/*
+tmp/*
+node_modules
+public/packs
+public/assets
+storage/*
