@@ -1,119 +1,173 @@
-
 <style>
-.body-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f2f5;
-  padding: 20px;
-}
+  /* Header & Footer Styles */
+  .header, .footer {
+    background: linear-gradient(to right, #3b82f6, #6366f1);
+    color: white;
+    padding: 16px 24px;
+  }
 
-.login-form {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
+  .footer {
+    color: #3b82f6;
+  }
+  .header-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Changed from gap to space-between */
+  }
+  .header-title {
+    margin: 0;
+    font-weight: 600;
+    position: relative;
+    left: -12px; /* Adjust this value to move Finder left/right */
+  }
+  .home-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+    margin-left: auto; /* Pushes Home to the far right */
+    padding-right: 20px; /* Adds some spacing from the edge */
+  }
+  .home-link:hover {
+    opacity: 0.9;
+    text-decoration: underline;
+  }
 
-.login-form h2 {
-  color: #1a1a1a;
-  font-size: 28px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: 600;
-}
-
-.field {
-  margin-bottom: 20px;
-}
-
-.field label {
-  display: block;
-  color: #4a4a4a;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.field input[type="email"],
-.field input[type="password"] {
-  width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-}
-
-.field input:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 15px 0;
-}
-
-.remember-me label {
-  margin: 0;
-  color: #4a4a4a;
-}
-
-.actions {
-  margin-top: 25px;
-}
-
-.actions input[type="submit"] {
-  width: 100%;
-  padding: 12px;
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.actions input[type="submit"]:hover {
-  background-color: #1d4ed8;
-}
-
-.shared-links {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.shared-links a {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.shared-links a:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
-}
-
-@media (max-width: 480px) {
+  /* Existing login page styles */
+  .body-container {
+    min-height: calc(100vh - 112px); /* Subtract header & footer height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f2f5;
+    padding: 20px;
+  }
+  
   .login-form {
-    padding: 25px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
   }
   
   .login-form h2 {
-    font-size: 24px;
+    color: #1a1a1a;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
   }
-}
+  
+  .field {
+    margin-bottom: 20px;
+  }
+  
+  .field label {
+    display: block;
+    color: #4a4a4a;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .field input[type="email"],
+  .field input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .field input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0;
+  }
+  
+  .remember-me label {
+    margin: 0;
+    color: #4a4a4a;
+  }
+  
+  .actions {
+    margin-top: 25px;
+  }
+  
+  .actions input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions input[type="submit"]:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .shared-links {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .shared-links a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .shared-links a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 480px) {
+    .login-form {
+      padding: 25px;
+    }
+    
+    .login-form h2 {
+      font-size: 24px;
+    }
+    
+    .header-content {
+      gap: 12px;
+    }
+    
+    .header-title {
+      left: -6px;
+      font-size: 1.5rem;
+    }
+  }
 </style>
 
+<!-- Header -->
+<header class="header">
+  <div class="header-content">
+    <h1 class="header-title">Finder</h1>
+    <a href="/" class="home-link">Home</a>
+  </div>
+</header>
+
+<!-- Body / Login Form -->
 <div class="body-container">
   <div class="login-form">
     <h2>Log in</h2>
@@ -121,12 +175,12 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
       <div class="field">
         <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "input-password" %>
+        <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
@@ -146,3 +200,8 @@
     </div>
   </div>
 </div>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; <%= Time.now.year %> Finder. All rights reserved.</p>
+</footer>
